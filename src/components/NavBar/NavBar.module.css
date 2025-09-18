@@ -1,0 +1,161 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0;
+  z-index: 1000;
+  transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+  background-color: transparent;
+}
+
+.scrolled {
+  background-color: rgba(26, 26, 26, 0.7); /* Dark with transparency */
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLinks a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.4s ease;
+}
+
+.navLinks a:hover::after,
+.navLinks a.activeLink::after {
+  width: 100%;
+}
+
+.navLinks a:hover,
+.navLinks a.activeLink {
+  color: var(--accent-color);
+}
+
+/* Style for NavHashLink to provide hover feedback */
+.navHashLink:hover {
+  color: var(--accent-color);
+}
+
+/* Redesigned "Get a Quote" Button */
+.quoteBtn {
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 1rem;
+}
+
+.quoteBtn:hover {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(162, 229, 41, 0.5);
+  transform: scale(1.05);
+}
+
+
+/* Mobile Menu Styles */
+.menuIcon {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.animateBar1 { transform: rotate(-45deg) translate(-5px, 6px); }
+.animateBar2 { opacity: 0; }
+.animateBar3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navLinks {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+  }
+
+  .navLinks.active {
+    max-height: 500px;
+    padding: 1rem 0;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  }
+
+  .navLinks a {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .quoteBtn {
+    margin-top: 1rem;
+    width: 50%;
+  }
+  
+  .navLinks a::after {
+    display: none;
+  }
+
+  .menuIcon {
+    display: flex;
+  }
+}
